@@ -21,16 +21,6 @@ class LoginPage:
         self.iframe.locator('div.no-account a').click()
 
 
-    def negative_cheks(self):
-        for name, value in fields.items():
-            self.iframe.get_by_role(role='textbox', name=name).fill(value)
-        self.iframe.locator('#field-id_gender-1').check()
-        self.iframe.get_by_role(role='checkbox', name='Receive offers from our partners').check()
-        self.iframe.get_by_role(role='checkbox', name='I agree to the terms and conditions and the privacy policy').check()
-        self.iframe.get_by_role(role='checkbox', name='Sign up for our newsletter').check()
-        self.iframe.get_by_role(role='checkbox', name='Customer data privacy').check()
-
-
     def fill_registration_form(self):
         expect(self.iframe.locator('#field-id_gender-1')).not_to_be_checked()
         expect(self.iframe.locator('#field-id_gender-2')).not_to_be_checked()
