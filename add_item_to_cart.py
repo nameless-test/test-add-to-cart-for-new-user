@@ -14,7 +14,7 @@ class CartCreation:
         filters = self.iframe.locator('#search_filters')
         filters.wait_for()
         filters.locator('a', has_text='80x120cm').click()
-        self.page.wait_for_timeout(3000)
+        self.page.wait_for_timeout(2000)
         products = self.iframe.locator('#products div.js-product')
         print(products.count())
         expect(products).to_have_count(3, timeout=2000)
