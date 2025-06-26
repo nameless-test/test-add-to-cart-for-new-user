@@ -1,5 +1,5 @@
-from registration_page import LoginPage
-from add_item_to_cart import CartCreation
+from pages.registration_page import LoginPage
+from pages.add_item_to_cart import CartCreation
 from variables import registration_data
 
 
