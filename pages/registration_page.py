@@ -13,7 +13,7 @@ class LoginPage:
         self.page = page
         self.iframe = None
 
-
+    # перехід на сторінку реєстрації
     def go_to_registration_page(self):
         self.page.goto('https://demo.prestashop.com/#/en/front')
         self.iframe = self.page.frame_locator("iframe").first
@@ -24,6 +24,7 @@ class LoginPage:
         field.evaluate("el => el.reportValidity()")
         return field.evaluate("el => el.validationMessage")
 
+    # перевірка повідомлень-помилок від браузера
     def check_required_fields_validation(self, message='Жодне поле не показало повідомлення валідації'):
         required_fields = self.iframe.locator('input[required]')
         count = required_fields.count()
@@ -36,7 +37,6 @@ class LoginPage:
             if msg.strip():
                 found_error = True
                 break
-
         assert found_error, message
 
     def negative_checks(self):
@@ -82,6 +82,7 @@ class LoginPage:
         self.iframe.get_by_role(role='button', name='SAVE').click()
         self.check_required_fields_validation('Пошта без @+gmail.com дозволена')
 
+        # Некоректна пошта
         self.iframe.get_by_role(role='textbox', name='Email').fill('test@')
         self.iframe.get_by_role(role='button', name='SAVE').click()
         self.check_required_fields_validation('Пошта без gmail.com дозволена')
