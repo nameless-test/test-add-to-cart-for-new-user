@@ -10,3 +10,4 @@ def browser_launch(playwright):
     page.close()
     context.close()
     browser.close()
+
